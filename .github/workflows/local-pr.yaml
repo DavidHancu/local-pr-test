@@ -27,6 +27,10 @@ jobs:
           require: write
         env:
           GITHUB_TOKEN: ${{ secrets.pat }}
+      
+      - run: echo "user-permission = ${{ steps.check.outputs.user-permission }}"
+      - run: echo "require-result = ${{ steps.check.outputs.require-result }}"
+      - run: echo "check-result = ${{ steps.check.outputs.check-result }}"
 
       - name: User doesn't have write permission
         if: steps.check.outputs.check-result == 'false'
